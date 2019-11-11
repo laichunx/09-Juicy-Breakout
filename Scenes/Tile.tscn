@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/tile.gd" type="Script" id=1]
+[ext_resource path="res://Assets/spark.png" type="Texture" id=2]
+[ext_resource path="res://Assets/tile_gray.png" type="Texture" id=3]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.342857, 0.505714, 0.697143, 0.874286 )
+colors = PoolColorArray( 1, 1, 1, 0.94902, 0.678431, 0.835294, 0.913725, 0.92549, 0.180392, 0.576471, 1, 0.898039, 0.164706, 0.282353, 0.819608, 0.886275 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, -30, 0 )
+angular_velocity = 3.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 8.0
+linear_accel_random = 0.5
+angle_random = 0.5
+scale = 4.0
+scale_random = 1.0
+color_ramp = SubResource( 4 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 15.5778 )
+
+[node name="Tile" type="StaticBody2D" groups=[
+"Tiles",
+]]
+position = Vector2( 160, 384 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="spark" type="Particles2D" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.01, 0.01 )
+emitting = false
+amount = 6
+lifetime = 2.5
+one_shot = true
+speed_scale = 2.5
+explosiveness = 0.7
+randomness = 0.5
+local_coords = false
+process_material = SubResource( 5 )
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

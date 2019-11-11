@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/OstrichSansInline-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Assets/OstrichSans-Heavy.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Scripts/RetryButton.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/quit.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/nextLevel.gd" type="Script" id=5]
+[ext_resource path="res://Assets/gameOver.ogg" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 100
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="Game Over" type="Node2D"]
+
+[node name="Message" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Message"]
+margin_top = 2.94324
+margin_right = 1023.0
+margin_bottom = 600.943
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="Message"]
+margin_left = 0.533814
+margin_top = 89.1156
+margin_right = 1023.53
+margin_bottom = 304.115
+custom_fonts/font = SubResource( 1 )
+text = "Game Over!"
+align = 1
+valign = 1
+
+[node name="retry" type="Button" parent="."]
+margin_left = 251.823
+margin_top = 324.022
+margin_right = 395.823
+margin_bottom = 375.022
+custom_fonts/font = SubResource( 2 )
+text = "Level1"
+script = ExtResource( 3 )
+
+[node name="quit" type="Button" parent="."]
+margin_left = 626.872
+margin_top = 323.374
+margin_right = 770.872
+margin_bottom = 374.374
+custom_fonts/font = SubResource( 2 )
+text = "Quit"
+script = ExtResource( 4 )
+
+[node name="nextLevel" type="Button" parent="."]
+margin_left = 444.206
+margin_top = 322.078
+margin_right = 588.206
+margin_bottom = 373.078
+custom_fonts/font = SubResource( 2 )
+text = "Level2"
+script = ExtResource( 5 )
+
+[node name="gameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+autoplay = true
